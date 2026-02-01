@@ -1,25 +1,23 @@
 import { useState, useEffect } from "react";
-import API from "../../services/api";
-import { toast } from "react-toastify";
 import { useParams, useNavigate } from "react-router-dom";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+import { toast } from "react-toastify";
+import API from "../../services/api";
 
 function NoteEditor() {
   const { id } = useParams(); // if editing an existing note
   const navigate = useNavigate();
+
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
   useEffect(() => {
     if (id) {
-      // fetch existing note
       API.get(`/notes/${id}`)
         .then((res) => {
           setTitle(res.data.title);
           setContent(res.data.content);
         })
-        .catch((err) => toast.error("Failed to fetch note"));
+        .catch(() => toast.error("Failed to fetch note"));
     }
   }, [id]);
 
@@ -42,6 +40,7 @@ function NoteEditor() {
   return (
     <div>
       <h2>{id ? "Edit Note" : "New Note"}</h2>
+
       <form onSubmit={handleSubmit}>
         <input
           placeholder="Title"
@@ -49,7 +48,16 @@ function NoteEditor() {
           onChange={(e) => setTitle(e.target.value)}
           required
         />
-        <ReactQuill value={content} onChange={setContent} />
+
+        {/* SIMPLE TEXT EDITOR (SAFE) */}
+        <textarea
+          placeholder="Write your note here..."
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          rows={8}
+          required
+        />
+
         <button type="submit">{id ? "Update" : "Create"}</button>
         <button type="button" onClick={() => navigate("/dashboard")}>
           Cancel
