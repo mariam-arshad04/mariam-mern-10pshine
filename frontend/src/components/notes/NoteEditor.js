@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import API from "../../services/api";
+import RichTextEditor from "../editor/RichTextEditor"; // ✅ ADD THIS
 
 function NoteEditor() {
-  const { id } = useParams(); // if editing an existing note
+  const { id } = useParams(); // edit mode if id exists
   const navigate = useNavigate();
 
   const [title, setTitle] = useState("");
@@ -15,7 +16,7 @@ function NoteEditor() {
       API.get(`/notes/${id}`)
         .then((res) => {
           setTitle(res.data.title);
-          setContent(res.data.content);
+          setContent(res.data.content); // ✅ HTML content loads correctly
         })
         .catch(() => toast.error("Failed to fetch note"));
     }
@@ -23,6 +24,12 @@ function NoteEditor() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!title || !content) {
+      toast.error("Title and content are required");
+      return;
+    }
+
     try {
       if (id) {
         await API.put(`/notes/${id}`, { title, content });
@@ -38,7 +45,7 @@ function NoteEditor() {
   };
 
   return (
-    <div>
+    <div style={{ maxWidth: "800px", margin: "auto" }}>
       <h2>{id ? "Edit Note" : "New Note"}</h2>
 
       <form onSubmit={handleSubmit}>
@@ -47,21 +54,30 @@ function NoteEditor() {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
+          style={{
+            width: "100%",
+            padding: "10px",
+            marginBottom: "12px",
+            fontSize: "16px",
+          }}
         />
 
-        {/* SIMPLE TEXT EDITOR (SAFE) */}
-        <textarea
-          placeholder="Write your note here..."
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          rows={8}
-          required
-        />
+        {/* ✅ RICH TEXT EDITOR */}
+        <RichTextEditor value={content} onChange={setContent} />
 
-        <button type="submit">{id ? "Update" : "Create"}</button>
-        <button type="button" onClick={() => navigate("/dashboard")}>
-          Cancel
-        </button>
+        <div style={{ marginTop: "15px" }}>
+          <button type="submit">
+            {id ? "Update Note" : "Create Note"}
+          </button>
+
+          <button
+            type="button"
+            onClick={() => navigate("/dashboard")}
+            style={{ marginLeft: "10px" }}
+          >
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );
