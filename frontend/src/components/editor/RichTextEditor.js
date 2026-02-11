@@ -29,7 +29,7 @@ function RichTextEditor({ value, onChange }) {
     }
   }, [value]);
 
-  return <div ref={editorRef} style={{ height: "250px" }} />;
+  return <div ref={editorRef} className="rich-editor-container" />;
 }
 
 export default RichTextEditor;

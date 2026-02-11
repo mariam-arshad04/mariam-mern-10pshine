@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import API from "../../services/api";
 import { toast } from "react-toastify";
+import login from "../../assets/login.png"; 
+import account_logo from "../../assets/account_logo.png"; 
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -37,6 +39,7 @@ function Login() {
       // ✅ VERY IMPORTANT (logout/navbar depends on this)
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("userEmail", email); // ✅ ADD THIS for user account page
+      localStorage.setItem("userName", res.data.name); // 👈 THIS
 
       toast.success("Logged in successfully");
       navigate("/dashboard");
@@ -48,49 +51,64 @@ function Login() {
   };
 
   return (
-    <div style={{ maxWidth: "400px", margin: "auto", padding: "20px" }}>
-      <h2>Login</h2>
+    <div className="auth-content">
+      <div  className="round-design">
+        <div className="inside-round">
+          <div style={{display:"flex",flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
+            <img src={account_logo} alt="Edit" style={{height:"110px", width:"110px"}}></img>
+            <h1 style={{color:"#273623"}}>WELCOME BACK !</h1>
+            <h2 style={{color:"white"}}>Login to continue taking notes</h2>
+          </div>
+          {/* <h2 style={{color:"white"}}>Login to continue taking notes</h2> */}
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          style={{ width: "100%", padding: "8px", marginBottom: "10px" }}
-        />
+          <form onSubmit={handleSubmit}>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="auth-input-box"
+              required
+            />
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          style={{ width: "100%", padding: "8px", marginBottom: "10px" }}
-        />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="auth-input-box"
+            />
 
-        <button
-          type="submit"
-          disabled={loading}
-          style={{ width: "100%", padding: "8px" }}
-        >
-          {loading ? "Logging in..." : "Login"}
-        </button>
-      </form>
+            <div style={{display:"flex", justifyContent:"center"}}>
+              <button
+                type="submit"
+                disabled={loading}
+                className="auth-btn"
+              >
+                {loading ? "Logging in..." : "Login"}
+              </button>
+            </div>
+          </form>
 
-      <p style={{ marginTop: "10px" }}>
-        Don’t have an account?{" "}
-        <Link to="/signup" style={{ color: "blue" }}>
-          Sign up
-        </Link>
-      </p>
+          <p style={{ marginTop: "10px" }}>
+            Don’t have an account?{" "}
+            <Link to="/signup" style={{ color: "blue" }}>
+              Sign up
+            </Link>
+          </p>
 
-      <p>
-        <Link to="/forgot-password" style={{ color: "blue" }}>
-          Forgot Password?
-        </Link>
-      </p>
+          <p>
+            <Link to="/forgot-password" style={{ color: "blue" }}>
+              Forgot Password?
+            </Link>
+          </p>
+        </div>
+      </div>
+
+      <div className="login-img-container">
+        <img src={login} alt="Edit" style={{height:"500px", width:"700px"}}></img>
+      </div>
     </div>
   );
 }

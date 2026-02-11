@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../../services/api";
 import { toast } from "react-toastify";
+import "../../styles/style.css";
+import Edit_image from "../../assets/Edit_image.png"; 
+import trash from "../../assets/trash.png"; 
 
 function NoteCard({ note, fetchNotes }) {
   const [loading, setLoading] = useState(false);
@@ -22,36 +25,80 @@ function NoteCard({ note, fetchNotes }) {
     }
   };
 
+  const formatDate = (dateString) => {
+    if (!dateString) return "";
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+  };
+  
+  const getDateLabel = () => {
+    // If updated_at exists and is different from created_at → edited
+    if (
+      note.updated_at &&
+      note.created_at &&
+      note.updated_at !== note.created_at
+    ) {
+      return {
+        label: "Updated on",
+        date: note.updated_at,
+      };
+    }
+  
+    // Otherwise → created only
+    return {
+      label: "Created on",
+      date: note.created_at,
+    };
+  };
+  
+
   return (
-    <div
-      style={{
-        border: "1px solid gray",
-        padding: "12px",
-        width: "220px",
-        borderRadius: "6px",
-      }}
-    >
-      <h4>{note.title}</h4>
+    <div className="individual-card">
+      <div className="card-content-delbtn">
+        <div>
+          <h4>{note.title}</h4>
+          <hr style={{color:"#7b9e61"}}></hr>
+          {/* ✅ RENDER RICH TEXT CONTENT */}
+          <div
+            style={{ maxHeight: "120px", overflow: "hidden"}}
+            dangerouslySetInnerHTML={{ __html: note.content }}
+          ></div>
+        </div>
 
-      {/* ✅ RENDER RICH TEXT CONTENT */}
-      <div
-        style={{ maxHeight: "120px", overflow: "hidden" }}
-        dangerouslySetInnerHTML={{ __html: note.content }}
-      />
-
-      <div style={{ marginTop: "10px" }}>
-        <button onClick={() => navigate(`/notes/edit/${note.id}`)}>
-          Edit
-        </button>
-
-        <button
-          onClick={handleDelete}
-          disabled={loading}
-          style={{ marginLeft: "8px" }}
-        >
-          {loading ? "Deleting..." : "Delete"}
-        </button>
+        <div>
+            <button
+              onClick={handleDelete}
+              disabled={loading}
+              style={{ marginLeft: "8px" }}
+              className="edit-del-button"
+            >
+              {/* {loading ? "Deleting..." : "Delete"} */}
+              <img src={trash} alt="Edit" className="edit-del-img"></img>
+            </button>
+        </div>
       </div>
+
+
+      <div className="editbtn-date">
+        <div>
+          <button onClick={() => navigate(`/notes/edit/${note.id}`)} className="edit-del-button">
+            {/* Edit */}
+            <img src={Edit_image} alt="Edit" className="edit-del-img"></img>
+          </button>
+        </div>
+
+        {/* ✅ CREATED / UPDATED DATE */}
+        <div className="note-date">
+          {getDateLabel().label}: {formatDate(getDateLabel().date)}
+        </div>
+      </div>
+
+      
+
     </div>
   );
 }

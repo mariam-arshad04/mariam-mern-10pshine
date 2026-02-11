@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import API from "../../services/api";
 import RichTextEditor from "../editor/RichTextEditor"; // ✅ ADD THIS
+import sidebar_bg from "../../assets/sidebar_bg.png"; 
+import pencil from "../../assets/pencil.png";
 
 function NoteEditor() {
   const { id } = useParams(); // edit mode if id exists
@@ -45,40 +47,63 @@ function NoteEditor() {
   };
 
   return (
-    <div style={{ maxWidth: "800px", margin: "auto" }}>
-      <h2>{id ? "Edit Note" : "New Note"}</h2>
+    <div className="edit-main-page">
 
-      <form onSubmit={handleSubmit}>
-        <input
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-          style={{
-            width: "100%",
-            padding: "10px",
-            marginBottom: "12px",
-            fontSize: "16px",
-          }}
-        />
+      <div className="sidebar">
+        <h1 style={{color:"#415233"}}>NoteHive</h1>
+          {/* <button onClick={() => navigate("/notes/new")} className="new-button">
+            Create New Note
+          </button> */}
 
-        {/* ✅ RICH TEXT EDITOR */}
-        <RichTextEditor value={content} onChange={setContent} />
+          <div className="sidebar-bottom">
+            <div className="sidebar-bottom-content">
+              <div className="sidebar_bottom_written">
+                <h4>Your ideas, your notes — all in one place, anytime, anywhere!</h4>
+              </div>
+              <div className="sidebar_bottom_image">
+                <img src={sidebar_bg} alt="Edit" className="sidebar-img"></img>
+              </div>
+            </div>
+          </div>
+      </div>
 
-        <div style={{ marginTop: "15px" }}>
-          <button type="submit">
-            {id ? "Update Note" : "Create Note"}
-          </button>
+      <div className="edit-place">
+        <div className="edit-area">
+          <div style={{display:"flex", flexDirection:"row", gap:"1rem"}}>
+            <img src={pencil} alt="Edit" style={{height:"100px", width:"100px"}}></img>
+            <h1 style={{color:"#14825a", fontSize:"45px"}}>{id ? "EDIT NOTE" : "NEW NOTE"}</h1>
+          </div>
 
-          <button
-            type="button"
-            onClick={() => navigate("/dashboard")}
-            style={{ marginLeft: "10px" }}
-          >
-            Cancel
-          </button>
+          <form onSubmit={handleSubmit}>
+            <input
+              placeholder="Title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className="note-title-input"
+              required
+              
+            />
+
+            {/* ✅ RICH TEXT EDITOR */}
+            <RichTextEditor value={content} onChange={setContent} />
+
+            <div style={{ marginTop: "15px" }} >
+              <button type="submit" className="update-create-cancel-btn">
+                {id ? "Update Note" : "Create Note"}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => navigate("/dashboard")}
+                className="update-create-cancel-btn"
+                style={{ marginLeft: "10px" }}
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
     </div>
   );
 }
