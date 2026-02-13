@@ -137,3 +137,7 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Ignore backup folders in frontend
+frontend_backup/
+frontend_secondbackup/

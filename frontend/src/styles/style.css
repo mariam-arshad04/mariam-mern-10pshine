@@ -1,0 +1,465 @@
+/* for navbar */
+.nav-item{
+    font-weight:bold;
+    font-size: 20px;
+    color: #4b6f45;
+    transition: 0.3s ease;
+    text-decoration: none;
+}
+
+.nav-item:hover{
+    box-shadow:0 3px 0 0 #4b6f45;
+    color: #8caf8d;
+}
+
+
+*{
+    /* margin: 0; */
+    scroll-behavior: smooth;
+    /* font-family: "Poppins", sans-serif; */
+}
+
+/* for main board displaying all the cards */
+.main-board{
+    background-color: #c7e8b3;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    width: 85%;
+    min-height: 84vh;
+    padding: 30px;
+    gap: 2rem;
+}
+
+.heading-btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #7b9e61;
+}
+
+/* for sideboard styling */
+.sidebar{
+    width: 15%;
+    background-color: white;
+    padding: 40px;
+    padding-top: -40px;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar .sidebar-bottom{
+    min-height: 69vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* align-items: flex-end; */
+}
+
+.sidebar .sidebar-bottom-content .sidebar_bottom_image img{
+    width: 250px;
+    height: 220px;
+}
+
+.filter-dropdown {
+    width: 200px;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #415233;
+    font-size: 14px;
+  }
+  
+
+
+/* for new button */
+.new-button,
+.logout-btn {
+    padding: 10px;
+    background-color:#c7e8b3;
+    color: #273623; 
+    border-radius: 10px;
+    width: 200px;
+    padding: 10px;
+    font-size: medium;
+    font-weight: 400;
+    border: 2px solid #273623; 
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition for border color */
+    /* font-family: ; */
+}
+
+.new-button:hover,
+.logout-btn:hover{
+    background-color: white;
+}
+
+.new-button:active,
+.logout-btn:active {
+    transform: scale(0.98);
+}
+
+/* for add button */
+.add-button{
+    padding: 10px;
+    background-color:white;
+    color: #273623; 
+    border-radius: 20px;
+    width: 200px;
+    padding: 10px;
+    font-size: medium;
+    font-weight: 400;
+    border: 2px solid transparent; 
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition for border color */
+    /* font-family: ; */
+}
+
+.add-button:hover {
+    border: 2px solid #273623; 
+    /* background-color:#c7e8b3 ; */
+}
+
+.add-button:active {
+    transform: scale(0.98);
+}
+
+/* for edit button inside card */
+.edit-del-img{
+    width: 35px;
+    height: 35px;
+    transition: transform 0.2s ease;
+    border: none;
+}
+
+/* edit-img:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 30px 50px rgba(107, 79, 79);
+} */
+
+
+.edit-del-button{
+    padding: 0px;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    /* transition: 0.3s ease; */
+    /* display: inline-flex; 
+    align-items: center;
+    justify-content: center; */
+    transition: 0.2s ease;
+    border: 1.5px solid transparent;
+    border-radius: 5px;
+}
+.edit-del-button:hover {
+    border: 1.5px solid #4b6f45;
+    border-radius: 5px;
+    /* box-shadow: 0 2px 7px rgba(179, 198, 155); subtle shadow */
+}
+
+/* for individual card */
+.individual-card{
+        border: 1px solid #273623;
+        padding: 12px;
+        width: 360px;
+        height: 270px;
+        border-radius: 15px;
+        background-color: white;
+        transition: 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        /* gap: 5rem; */
+}
+
+.individual-card:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px #7b9e61;
+}
+
+.note-date{
+    display: flex;
+    justify-content: flex-end;
+    align-items: end;
+}
+
+.card-content-delbtn{
+    display: flex;
+    flex-direction: row;
+    /* gap: 7rem; */
+    justify-content: space-between;
+}
+
+.editbtn-date{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* justify-content: end; */
+    /* align-items: center; */
+    margin-top: auto;
+}
+
+/* for editing page */
+.edit-main-page{
+    display: flex;
+    flex-direction: row;
+}
+
+.edit-place{
+    background-color: #c7e8b3;
+    width: 85%;
+    padding: 40px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.edit-area{
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+}
+
+.update-create-cancel-btn{
+    padding: 10px;
+    background-color:white;
+    color: #273623; 
+    border-radius: 20px;
+    width: 200px;
+    padding: 10px;
+    font-size: medium;
+    font-weight: 400;
+    border: 2px solid transparent; 
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition for border color */
+    /* font-family: ; */
+}
+
+.update-create-cancel-btn:hover{
+    border: 2px solid #273623; 
+    /* background-color:#c7e8b3 ; */
+}
+
+.update-create-cancel-btn:active{
+    transform: scale(0.98);
+}
+
+.note-title-input{
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 12px;
+        font-size: 16px;
+        border: 2px solid #a9c89a;
+        border-radius: 8px;
+        outline: none;
+        font-size: 16px;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.note-title-input:focus {
+    border-color: #273623;              /* darker outline */
+    box-shadow: 0 0 0 2px rgba(39,54,35,0.2);
+}
+
+/* Quill container (overall editor box) */
+.rich-editor-container {
+    height: 350px; /* same as inline style you had */
+    width: 100%;
+    border: 3px solid #a9c89a;
+    /* border-radius: 8px; */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background-color: white;
+  }
+  
+/* Inner editable area */
+.rich-editor-container .ql-editor {
+    min-height: 200px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #a9c89a;
+}
+  
+/* Focus effect */
+.rich-editor-container.ql-focused,
+.rich-editor-container:focus-within {
+    border-color: #273623 !important;
+    box-shadow: 0 0 0 2px rgba(39, 54, 35, 0.2);
+}
+  
+
+/* Quill toolbar styling */
+.rich-editor-container .ql-toolbar.ql-snow {
+    border: 2px solid #273623 !important;       /* darker border */
+    background-color: #fdfdfd;       /* optional: slightly off-white */
+}
+
+/* Optional: buttons inside toolbar */
+.rich-editor-container .ql-toolbar button {
+    color: #273623;                  /* darker icon color */
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.rich-editor-container .ql-toolbar button:hover,
+.rich-editor-container .ql-toolbar button:focus {
+    color: #415233;                  /* darker on hover/focus */
+    background-color: #e6f0d6;      /* subtle highlight */
+}
+
+
+/* ------------------------------------------------------------- */
+/* for login page */
+.round-design{
+    border-radius: 30px;
+    background-color: #a3c6a4;
+    height: 600px;
+    width: 570px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border:2px solid #7b9e61;
+    transition: 0.3s ease;
+}
+
+.round-design:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px #7b9e61;
+}
+
+.inside-round{
+    height: 500px;
+    width: 450px;
+}
+
+.auth-content{
+    /* max-width: 400px;
+    margin: auto; */
+    height: 86vh;
+    background-color: #ddf2d3;
+    padding: 20px; 
+    padding-left: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 6rem;
+}
+
+.auth-input-box{
+    border-radius: 15px;
+    width: 433px;
+    height: 25px;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    transition: border-color 0.3s ease, box-shadow 0.2s ease;
+}
+
+.auth-input-box:focus{
+    /* border:1px solid #415233; */
+    border-color: #273623;              /* darker outline */
+    box-shadow: 0 0 0 2px rgba(39,54,35,0.2);
+}
+
+.auth-btn{
+    padding: 10px;
+    background-color:white;
+    color: #273623; 
+    border-radius: 20px;
+    width: 453px;
+    padding: 10px;
+    font-size: medium;
+    font-weight: 400;
+    border: 2px solid transparent; 
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition for border color */
+}
+
+.auth-btn:hover{
+    border: 2px solid #273623; 
+    /* background-color:#c7e8b3 ; */
+}
+
+.auth-btn:active{
+    transform: scale(0.98);
+}
+
+
+/* ------------------------------------------------------ */
+/* for profile page */
+.profile-content{
+    /* max-width: 400px;
+    margin: auto; */
+    height: 86vh;
+    background-color: #ddf2d3;
+    padding: 20px; 
+    padding-left: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 6rem;
+}
+
+.profile-design{
+    border-radius: 30px;
+    background-color: white;
+    height: 600px;
+    width: 570px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border:2px solid #7b9e61;
+    transition: 0.3s ease;
+}
+
+.profile-design:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px #7b9e61;
+}
+
+.profile-round{
+    height: 500px;
+    width: 450px;
+    color: #4b6f45;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-logout-btn{
+    padding: 10px;
+    background-color:#a3c6a4;
+    color: #273623; 
+    border-radius: 20px;
+    width: 453px;
+    padding: 10px;
+    font-size: medium;
+    font-weight: 400;
+    border: 2px solid transparent; 
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition for border color */
+}
+
+.profile-logout-btn:hover{
+    border:2px solid #4b6f45;
+    background-color: white;
+}
+
+.profile-upload-btn{
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 16px;
+    background-color: #7b9e61;
+    color: white;
+    border-radius: 6px;
+    border: 2px solid transparent;
+    /* // cursor: "pointer", */
+    font-size: 20px;
+    transition: 0.2s ease;
+}
+
+.profile-upload-btn:hover{
+    border:2px solid #4b6f45;
+    background-color: white;
+    color: #415233;
+}
