@@ -355,29 +355,6 @@ http://localhost:3000
 
 ---
 
-## 🎯 Additional Highlights
-
-- Secure password storage  
-- JWT token validation  
-- Clean architecture (Controller → Service → DB)  
-- Structured logging  
-- Code quality monitoring with SonarQube  
-- Proper error handling  
-- Modular file structure  
-- Clean and responsive UI  
-
----
-
-## 📌 Future Enhancements
-
-- Rich Text Editor Integration  
-- Real-time updates using Socket.IO  
-- Search & Filter notes  
-- Export / Import notes  
-- Profile picture upload  
-
----
-
 ## 👩‍💻 Author
 
 Mariam  
